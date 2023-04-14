@@ -1,7 +1,15 @@
-export default function App() {
+import Title from "@components/title";
+
+export default function Homepage() {
   return (
     <>
-      <h1>Pizza Store</h1>
+      <div>
+        <p>
+          {" "}
+          <br></br>PIZZA STORE{" "}
+        </p>
+      </div>
+      <div></div>
     </>
   );
 }

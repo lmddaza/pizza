@@ -1,7 +1,7 @@
-export default function App() {
+export default function Flavors({ flavors }) {
   return (
-    <>
-      <h1>Pizza</h1>
-    </>
+    <div>
+      <p>Flavors: {flavors}</p>
+    </div>
   );
 }

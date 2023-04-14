@@ -3,6 +3,11 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@styles/Home.module.css";
 import Title from "@components/title";
+import Second from "@components/title/second";
+import Third from "@components/title/third";
+import Fourth from "@components/title/fourth";
+import Quantity from "@components/title/fifth";
+
 import Content from "@pages/homepage";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,7 +21,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Title></Title>
+      <br></br>
+      <Second></Second>
+
+      <Third></Third>
+      <br></br>
+      <Fourth></Fourth>
+      <Quantity></Quantity>
       <Content></Content>
       <main className={styles.main}>
         <div className={styles.description}>
