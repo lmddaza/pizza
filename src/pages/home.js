@@ -58,6 +58,7 @@ export default function Calculator() {
           <div className={styles.buttons_row}>
             <button
               className={styles.buttons}
+              type="text"
               value={1}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -66,6 +67,7 @@ export default function Calculator() {
 
             <button
               className={styles.buttons}
+              type="text"
               value={2}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -74,6 +76,7 @@ export default function Calculator() {
 
             <button
               className={styles.buttons}
+              type="text"
               value={3}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -91,6 +94,7 @@ export default function Calculator() {
           <div className={styles.buttons_row}>
             <button
               className={styles.buttons}
+              type="text"
               value={4}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -99,6 +103,7 @@ export default function Calculator() {
 
             <button
               className={styles.buttons}
+              type="text"
               value={5}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -108,6 +113,7 @@ export default function Calculator() {
 
             <button
               className={styles.buttons}
+              type="text"
               value={6}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -125,6 +131,7 @@ export default function Calculator() {
           <div className={styles.buttons_row}>
             <button
               className={styles.buttons}
+              type="text"
               value={7}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -133,6 +140,7 @@ export default function Calculator() {
 
             <button
               className={styles.buttons}
+              type="text"
               value={8}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -140,6 +148,7 @@ export default function Calculator() {
             </button>
             <button
               className={styles.buttons}
+              type="text"
               value={9}
               onClick={num1 ? getNum2 : getNum1}
             >
@@ -147,6 +156,7 @@ export default function Calculator() {
             </button>
             <button
               className={styles.buttons}
+              type="text"
               value={"-"}
               onClick={getOperationValue}
             >
@@ -168,8 +178,7 @@ export default function Calculator() {
               +
             </button>
 
-            <button className={styles.buttons} 
-            value={"="} onClick={calculate}>
+            <button className={styles.buttons} value={"="} onClick={calculate}>
               =
             </button>
           </div>

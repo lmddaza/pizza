@@ -1,4 +1,5 @@
 import Title from "@/components/title/first";
+import "./index.css";
 
 export default function Homepage() {
   return (
