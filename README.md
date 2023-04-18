@@ -36,3 +36,27 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## 4/17/2023
+STATE 
+- estado ng mind or code
+- state is a variable
+- si state may dalawa siyang paramaters, yung isa
+name var yung isa pang change ng name sa variable
+- manual siya kada run
+
+- unless gumawa ka ng function na
+- pag variable let gagamitn
+- ang kagandahan nung pag gamit ng state ay mag babago lang mag may interaction
+- useEffect(), nagagamit kapag nang ti trigger ng gusto itrigger. 
+
+
+
+export def function dash(){
+    const [hello, setHello] = useState("haha");
+
+    return (
+        <div>
+        <Title
+    )
+}

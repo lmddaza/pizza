@@ -1,8 +1,11 @@
-export default function Size({ Solo, FamilySize }) {
+export default function Contact({ Name, Address, Number }) {
   return (
     <div>
-      <p>Solo: {Solo}</p>
-      <p>FamilySize: {FamilySize}</p>
+      <br></br>
+      <h3> Contact Info: </h3>
+      <p>Name: {Name}</p>
+      <p>Address: {Address}</p>
+      <p>Phone Number: {Number}</p>
     </div>
   );
 }

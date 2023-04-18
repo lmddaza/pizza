@@ -1,9 +1,8 @@
-export default function Match({ Match }) {
+export default function About({ About }) {
   return (
     <div>
-      <br></br>
-
-      <p>Match the Flavors for your cravings: {Match}</p>
+      <br></br> <br></br>
+      <p> Follow us on our Social Media Accounts for more updates!</p>
     </div>
   );
 }

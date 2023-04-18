@@ -2,11 +2,13 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@styles/Home.module.css";
-import Title from "@components/title";
+import Title from "@/components/title/first";
+import First from "@components/title/first";
 import Second from "@components/title/second";
 import Third from "@components/title/third";
 import Fourth from "@components/title/fourth";
 import Quantity from "@components/title/fifth";
+
 
 import Content from "@pages/homepage";
 
@@ -22,6 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <br></br>
+      <First></First>
       <Second></Second>
 
       <Third></Third>

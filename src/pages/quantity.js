@@ -1,13 +1,10 @@
 import Title from "@components/title/second";
 
-export default function Quantity() {
+export default function Order() {
   return (
     <>
       <div>
-        <p>How many would you like to order?</p>
-      </div>
-      <div>
-        <Title Quantity="1" school="B" mall="C" />
+        <Title Flavor="Pepperoni" Quantity="1" Size="Large" />
       </div>
     </>
   );
