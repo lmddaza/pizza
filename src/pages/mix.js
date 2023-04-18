@@ -53,7 +53,7 @@ export default function App() {
     <div className={styles.buttons}>
       <div className={styles.calculator}>
         <div className={styles.display}>
-          <span>{equal ? "(" + equal + ")" : ""}</span> {calc || 0}
+          <span>{}</span> {calc || 0}
         </div>
 
         <div className={styles.operators}>

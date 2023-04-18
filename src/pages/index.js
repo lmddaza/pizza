@@ -8,9 +8,6 @@ import Second from "@components/title/second";
 import Third from "@components/title/third";
 import Fourth from "@components/title/fourth";
 import Quantity from "@components/title/fifth";
-import "./index.css";
-
-import Content from "@pages/homepage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +28,7 @@ export default function Home() {
       <br></br>
       <Fourth></Fourth>
       <Quantity></Quantity>
-      <Content></Content>
+
       <main className={styles.main}>
         <div className={styles.description}>
           <p>
