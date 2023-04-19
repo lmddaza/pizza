@@ -5,7 +5,7 @@ export default function App() {
   const [calc, setCalc] = useState("");
   const [equal, setEqual] = useState("");
 
-  const ops = ["/", "*", "-", "+", "."];
+  const ops = ["/", "*", "-", "+"];
 
   const createDigits = () => {
     const digits = [];
@@ -24,8 +24,8 @@ export default function App() {
 
   const updateCalc = (value) => {
     if (
-      (ops.includes(value) && calc === "") ||
-      (ops.includes(value) && ops.includes(calc.slice(-1)))
+      (ops.includes(value) && calc === "") || //if the first value is an operator
+      (ops.includes(value) && ops.includes(calc.slice(-1))) //if the last value is an operator
     ) {
       return;
     }

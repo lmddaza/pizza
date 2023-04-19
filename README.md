@@ -38,25 +38,49 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## 4/17/2023
-STATE 
+
+STATE
+
 - estado ng mind or code
 - state is a variable
 - si state may dalawa siyang paramaters, yung isa
-name var yung isa pang change ng name sa variable
+  name var yung isa pang change ng name sa variable
 - manual siya kada run
 
 - unless gumawa ka ng function na
 - pag variable let gagamitn
 - ang kagandahan nung pag gamit ng state ay mag babago lang mag may interaction
-- useEffect(), nagagamit kapag nang ti trigger ng gusto itrigger. 
-
-
+- useEffect(), nagagamit kapag nang ti trigger ng gusto itrigger.
 
 export def function dash(){
-    const [hello, setHello] = useState("haha");
+const [hello, setHello] = useState("haha");
 
     return (
         <div>
         <Title
     )
+
 }
+
+## forms
+
+kapah chinange into forms
+-gumagamit ng packages for forms
+
+- package.json nakalagay kung san gusto irun
+- old projects pwede mag clone ng forms then babsahin lang sa docu
+
+1. declare function
+2. export sa last
+
+- standard declate ng pages tapos
+- stop auto reset in forms js: e.preventDefault();
+
+## formik
+
+page -> container -> compoonent
+
+- kapag gagawa multitple forms under components
+- dapat na ka enclose yung form sa formik
+- import formkik
+- ang initial values pwede ng diretso
