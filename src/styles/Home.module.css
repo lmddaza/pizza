@@ -87,3 +87,171 @@
 	color: aqua;
 	background-color: pink ;
 }
+
+
+
+.submitBtnContainer {
+	display: flex;
+	justify-content: center;
+	width: 390px;
+	height: 36px;
+	margin-top: 15px;
+  }
+ .firstName > h1{
+	color: pink;
+	font-size: 2px;
+	background-color: light red;
+ }
+
+.formikContainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	height: auto;
+	width: 100%;
+	background-color: white;
+	padding: 30px;
+  }
+  
+  .formContainer {
+	display: flex;
+	flex-direction: column;
+	height: auto;
+	width: 440px;
+	background-color: white;
+	box-shadow: 1px 15px 50px 1px grey;
+	border-radius: 10px;
+	padding: 15px;
+  }
+  
+  .header {
+	display: flex;
+	flex-direction: column;
+	height: 70px;
+	width: 410px;
+	padding: 10px;
+	border-bottom: .1px solid lightgrey;
+	
+	
+  }
+  
+  .infoContainer {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	height: auto;
+	width: 410px;
+	padding: 10px;
+	color: red;
+
+  }
+  
+  .nameContainer {
+	display: flex;
+	width: 390px;
+	height: 50px;
+	padding-bottom: 10px;
+	justify-content: space-between;
+  }
+  
+  .name {
+	padding-left: 10px;
+	background-color: #f5f6f7;
+	width: 188px;
+	outline: none;
+	color: black;
+	border-radius: 5px;
+	border: .1px solid lightgrey;
+  }
+  
+  .emailPass {
+	padding-left: 10px;
+	background-color: #f5f6f7;
+	width: 390px;
+	height: 40px;
+	outline: none;
+	color: black;
+	border-radius: 5px;
+	border: .1px solid lightgrey;
+	margin-bottom: 10px;
+  }
+  
+  .submitButton {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	width: 200px;
+	height: 36px;
+	border-radius: 10px;
+	background-color: #00a400;
+	border: none;
+	font-size: 18px;
+	font-weight: bold;
+	
+  }
+
+  .submitButton >h3 {
+	color: white;
+	
+  }
+  
+  
+  .submitButton:hover {
+	cursor: pointer;
+	background-color: #00C301;
+  }
+  
+  .datePicker {
+	padding-left: 10px;
+	background-color: #f5f6f7;
+	width: 390px;
+	height: 40px;
+	outline: none;
+	color: black;
+	border-radius: 5px;
+	border: .1px solid lightgrey;
+	margin-bottom: 10px;
+  }
+  
+  .genderButtonsContainer {
+	display: flex;
+	width: 390px;
+	height: 40px;
+	justify-content: space-between;
+	margin-bottom: 10px;
+  }
+  
+  .genderButtons {
+	display: flex;
+	flex-wrap: wrap;
+	height: 36px;
+	width: 123px;
+	justify-content: space-between;
+	align-content: center;
+	padding: 10px;
+	border-radius: 5px;
+	border: .1px solid lightgrey;
+	background-color: #f5f6f7;
+	color: black;
+	font-family: Arial;
+	font-size: 14px;
+	accent-color: rgb(79, 126, 226);
+  }
+  
+  .pronouns {
+	display: flex;
+	width: 390px;
+	height: 36px;
+	background-color: #f5f6f7;
+	color: black;
+	outline: none;
+	border-radius: 5px;
+	border: .1px solid lightgrey;
+	padding-left: 10px;
+	margin-bottom: 5px;
+	font-size: 14px;
+  }
+  
+ 
