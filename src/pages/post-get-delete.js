@@ -1,132 +1,204 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import styles from "@/styles/Home.module.css";
 
-const API_ENDPOINT = "https://api.ahglab.com/api:W7k9W8HQ/users";
+const API_URL = "https://api.ahglab.com/api:W7k9W8HQ/users";
 
-const UserForm = () => {
+const validationSchema = Yup.object().shape({
+  last_name: Yup.string().required("Last name is required"),
+  first_name: Yup.string().required("First name is required"),
+  credentials: Yup.string().required("Credentials is required"),
+  birthdate: Yup.date().required("Birthdate is required"),
+  gender: Yup.string()
+    .oneOf(["male", "female", "custom"])
+    .required("Gender is required"),
+});
+
+const initialValues = {
+  last_name: "",
+  first_name: "",
+  gender: "",
+  birthdate: "",
+  credentials: "",
+};
+
+const App = () => {
   const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showTable, setShowTable] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
 
-  const handleSubmit = (values, { resetForm }) => {
+  useEffect(() => {
+    if (showTable) {
+      axios
+        .get(API_URL)
+        .then((response) => {
+          setUsers(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          setErrorMessage("Failed to fetch users");
+        });
+    }
+  }, [showTable]);
+
+  const handleGet = () => {
+    setShowTable(true);
+    setErrorMessage(null);
+  };
+  const handleGetUser = (userId) => {
     axios
-      .post(API_ENDPOINT, values)
+      .get(`${API_URL}/${userId}`)
       .then((response) => {
-        console.log(response);
-        resetForm();
+        setSelectedUser(response.data);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
+        setErrorMessage("Failed to get user");
       });
   };
 
-  const handleGetUsers = () => {
+  const handleEdit = (user) => {
+    // Check if gender is null before setting selected user state
+    const editedUser = { ...user, gender: user.gender || "" };
+    setSelectedUser(editedUser);
+  };
+
+  const handleDelete = (userId) => {
     axios
-      .get(API_ENDPOINT)
-      .then((response) => {
-        console.log(response);
-        setUsers(response.data);
+      .delete(`${API_URL}/${userId}`)
+      .then(() => {
+        setUsers(users.filter((user) => user.id !== userId));
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
+        setErrorMessage("Failed to delete user");
       });
   };
 
-  const handleDeleteUser = (id) => {
-    axios
-      .delete(`${API_ENDPOINT}/${id}`)
-      .then((response) => {
-        console.log(response);
-        setUsers(users.filter((user) => user.id !== id));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const handleSubmit = (values, { setSubmitting }) => {
+    if (selectedUser) {
+      axios
+        .put(`${API_URL}/${selectedUser.id}`, values)
+        .then((response) => {
+          setUsers(
+            users.map((user) =>
+              user.id === response.data.id ? response.data : user
+            )
+          );
+          setSelectedUser(null);
+          setSubmitting(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setErrorMessage("Failed to update user");
+          setSubmitting(false);
+        });
+    } else {
+      axios
+        .post(API_URL, values)
+        .then((response) => {
+          setUsers([...users, response.data]);
+          setSubmitting(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setErrorMessage("Failed to create user");
+          setSubmitting(false);
+        });
+    }
   };
 
   return (
     <div>
-      <h2>User Form</h2>
-      <Formik
-        initialValues={{
-          first_name: "",
-          last_name: "",
-          credentials: "",
-          password: "",
-          birthdate: "",
-          gender: "",
-        }}
-        onSubmit={handleSubmit}
-      >
-        <Form>
-          <div>
-            <label htmlFor="first_name">First Name:</label>
-            <Field type="text" name="first_name" />
-          </div>
-          <div>
-            <label htmlFor="last_name">Last Name:</label>
-            <Field type="text" name="last_name" />
-          </div>
-          <div>
-            <label htmlFor="credentials">Credentials:</label>
-            <Field type="text" name="credentials" />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <Field type="password" name="password" />
-          </div>
-          <div>
-            <label htmlFor="birthdate">Birthdate:</label>
-            <Field type="date" name="birthdate" />
-          </div>
-          <div>
-            <label htmlFor="gender">Gender:</label>
-            <Field as="select" name="gender">
-              <option value="">Select a gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </Field>
-          </div>
-          <button type="submit">Submit</button>
-        </Form>
-      </Formik>
-      <div>
-        <button onClick={handleGetUsers}>Get Users</button>
+      <button onClick={handleGet}>Get Users</button>
+      {errorMessage && <p>{errorMessage}</p>}
+      {showTable && (
         <table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>First Name</th>
               <th>Last Name</th>
-              <th>Credentials</th>
-              <th>Password</th>
-              <th>Birthdate</th>
+              <th>First Name</th>
               <th>Gender</th>
-              <th>Action</th>
+              <th>Birthdate</th>
+              <th>Credentials</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
               <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.first_name}</td>
                 <td>{user.last_name}</td>
-                <td>{user.credentials}</td>
-                <td>{user.password}</td>
-                <td>{user.birthdate}</td>
+                <td>{user.first_name}</td>
                 <td>{user.gender}</td>
+                <td>{user.birthdate}</td>
+                <td>{user.credentials}</td>
                 <td>
-                  <button onClick={() => handleDeleteUser(user.id)}>
-                    Delete
-                  </button>
+                  <button onClick={() => handleEdit(user)}>Edit</button>
+                </td>
+                <td>
+                  <button onClick={() => handleDelete(user.id)}>Delete</button>
+                </td>
+                <td>
+                  <button onClick={() => handleGetUser(user.id)}>View</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
+      )}
+      <Formik
+        initialValues={selectedUser || initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <label>
+              Last Name:
+              <Field type="text" name="last_name" />
+              <ErrorMessage name="last_name" />
+            </label>
+            <br />
+            <label>
+              First Name:
+              <Field type="text" name="first_name" />
+              <ErrorMessage name="first_name" />
+            </label>
+            <br />
+            <label>
+              Gender:
+              <Field as="select" name="gender">
+                <option value="">Select a gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="custom">Custom</option>
+              </Field>
+              <ErrorMessage name="gender" />
+            </label>
+            <br />
+            <label>
+              Birthdate:
+              <Field type="date" name="birthdate" />
+              <ErrorMessage name="birthdate" />
+            </label>
+            <br />
+            <label>
+              Credentials:
+              <Field type="text" name="credentials" />
+              <ErrorMessage name="credentials" />
+            </label>
+            <br />
+            <button type="submit" disabled={isSubmitting}>
+              {selectedUser ? "Update" : "Sign Up"}
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
-
-export default UserForm;
+export default App;
